@@ -1,6 +1,6 @@
 # HERMES - Defender Enumeration Tool (C Edition)
 
-A modular Linux system auditing tool written entirely in C, designed for **defensive security analysis**. This tool scans and enumerates key system information, environment variables, SUID binaries, capabilities, and running processes, helping administrators and security enthusiasts understand potential attack surfaces from a defender’s perspective.
+HERMES is a dependency-free, statically compiled Linux enumeration and incident response tool written in pure C. Designed for defenders, DFIR analysts, and sysadmins who need a single binary that runs on any Linux system — including stripped containers, embedded devices, and potentially compromised hosts — without relying on interpreters, package managers, or shell utilities.
 
 Unlike typical offensive enumeration scripts, this tool focuses on **system awareness and safe inspection**, providing insights into the system’s configuration, permissions, and processes without relying on external shell utilities. Its modular design makes it easy to expand with additional scanning capabilities.
 

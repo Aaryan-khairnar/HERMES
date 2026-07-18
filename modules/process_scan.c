@@ -21,7 +21,7 @@ Linux programming interface pg 267
 struct process{
     int pid;
     char name[1024];
-    char cmdline[2048];
+    char cmdline[1024];
     int uid; //Which user runs process 
     int ppid;  //Parent process Id
     char state; //Sleeping or Active

@@ -159,6 +159,5 @@ void run_system_info() {
 
   if(s.euid == 0){
     printf("[!] Running as root — extended checks enabled\n");
-    // DO THIS LATER
   }
 }

@@ -89,7 +89,7 @@ void visit_directory(char* dirpath){
             continue;
         }
 
-        if (!S_ISREG(st.st_mode)){  // skip if anything is not a regular directory
+        if (!S_ISREG(st.st_mode)){  // skip if anything is not a regular file
             continue;
         }
 
@@ -102,6 +102,7 @@ void visit_directory(char* dirpath){
 /******* ACTUALLY DOES THE STORING OF INFORMATION PART **********/
 void store_res(struct stat st, char* path){
     struct FileMetadata f;
+    memset(&f, 0, sizeof(struct FileMetadata));
         snprintf(f.path, sizeof(f.path), "%s", path);
         f.uid = st.st_uid;
         f.gid = st.st_gid;

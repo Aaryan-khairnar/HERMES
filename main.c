@@ -25,3 +25,8 @@ int main() {
 
     return 0;
 }
+
+/* 
+To compile the code, use the following command:
+gcc -Iinclude main.c modules/*.c -o prionyx 
+*/

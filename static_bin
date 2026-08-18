@@ -1,0 +1,71 @@
+┌─[indra@dev]-[~]
+└─> cd PRIONYX/
+┌─[indra@dev]-[~/PRIONYX]
+└─> ls
+binary  LICENSE  main.c  modules  README.md
+┌─[indra@dev]-[~/PRIONYX]
+└─> gcc -static -Wall -Wextra -Wpedantic -g \
+main.c modules/*.c \
+-o prionyx
+main.c:31:29: warning: ‘/*’ within comment [-Wcomment]
+   31 | gcc -Iinclude main.c modules/*.c -o prionyx
+modules/capability_scan.c:6: warning: ISO C forbids an empty translation unit [-Wpedantic]
+modules/cron_scan.c:2: warning: ISO C forbids an empty translation unit [-Wpedantic]
+modules/login_history.c:2: warning: ISO C forbids an empty translation unit [-Wpedantic]
+modules/network_scan.c:11: warning: ISO C forbids an empty translation unit [-Wpedantic]
+/usr/bin/ld.bfd: cannot find -lc: No such file or directory
+/usr/bin/ld.bfd: have you installed the static version of the c library ?
+collect2: error: ld returned 1 exit status
+┌─[indra@dev]-[~/PRIONYX]
+└─> sudo dnf install glibc-static
+Updating and loading repositories:
+Repositories loaded.
+Package                                                   Arch          Version                                                   Repository                            Size
+Installing:
+ glibc-static                                             x86_64        0:2.43-8.fc44                                             updates                           43.0 MiB
+Installing dependencies:
+ libxcrypt-static                                         x86_64        0:4.5.2-3.fc44                                            fedora                             1.4 MiB
+
+Transaction Summary:
+ Installing:         2 packages
+
+Total size of inbound packages is 7 MiB. Need to download 7 MiB.
+After this operation, 44 MiB extra will be used (install 44 MiB, remove 0 B).
+Is this ok [y/N]: y
+[1/2] glibc-static-0:2.43-8.fc44.x86_64                                                                                             100% |   1.7 MiB/s |   6.7 MiB |  00m04s
+[2/2] libxcrypt-static-0:4.5.2-3.fc44.x86_64                                                                                        100% |  75.2 KiB/s | 323.7 KiB |  00m04s
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[2/2] Total                                                                                                                         100% |   1.0 MiB/s |   7.1 MiB |  00m07s
+Running transaction
+[1/4] Verify package files                                                                                                          100% |  47.0   B/s |   2.0   B |  00m00s
+[2/4] Prepare transaction                                                                                                           100% |  55.0   B/s |   2.0   B |  00m00s
+[3/4] Installing glibc-static-0:2.43-8.fc44.x86_64                                                                                  100% | 333.2 MiB/s |  43.0 MiB |  00m00s
+[4/4] Installing libxcrypt-static-0:4.5.2-3.fc44.x86_64                                                                             100% |   9.2 MiB/s |   1.4 MiB |  00m00s
+Complete!
+┌─[indra@dev]-[~/PRIONYX]
+└─> gcc -static -Wall -Wextra -Wpedantic -g \
+main.c modules/*.c \
+-o prionyx
+main.c:31:29: warning: ‘/*’ within comment [-Wcomment]
+   31 | gcc -Iinclude main.c modules/*.c -o prionyx
+modules/capability_scan.c:6: warning: ISO C forbids an empty translation unit [-Wpedantic]
+modules/cron_scan.c:2: warning: ISO C forbids an empty translation unit [-Wpedantic]
+modules/login_history.c:2: warning: ISO C forbids an empty translation unit [-Wpedantic]
+modules/network_scan.c:11: warning: ISO C forbids an empty translation unit [-Wpedantic]
+/usr/bin/ld.bfd: /tmp/ccUB6ql1.o: in function `run_system_info':
+/home/indra/Projects/PRIONYX/modules/system_info.c:118:(.text+0x2cc): warning: Using 'getgrgid' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+/usr/bin/ld.bfd: /home/indra/Projects/PRIONYX/modules/system_info.c:58:(.text+0x8e): warning: Using 'getpwuid' in statically linked applications requires at runtime the shared libraries from the glibc version used for linking
+┌─[indra@dev]-[~/PRIONYX]
+└─> ls
+binary  LICENSE  main.c  modules  prionyx  README.md
+┌─[indra@dev]-[~/PRIONYX]
+└─> ls -lh prionyx 
+-rwxr-xr-x. 1 indra indra 4.9M Aug 18 11:03 prionyx
+┌─[indra@dev]-[~/PRIONYX]
+└─> file prionyx 
+prionyx: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), statically linked, BuildID[sha1]=99bbc9342d69f6198c09834a25a403e6ad8e9618, for GNU/Linux 3.2.0, with debug_info, not stripped, too many notes (256)
+┌─[indra@dev]-[~/PRIONYX]
+└─> ldd ./prionyx 
+	not a dynamic executable
+┌─[indra@dev]-[~/PRIONYX]
+└─> ./prionyx
